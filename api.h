@@ -203,7 +203,7 @@ AUTORUN {
         // paths and extensions
         "**.mp4;**.ogv;**.avi;**.mkv;**.wmv;**.mpg;**.mpeg",
         // conversion steps
-        "ext/ext-ffmpeg/ffmpeg.EXE -hide_banner -nostdin -loglevel fatal -y -i INPUT -threads 1 -qscale:v 4 -y -c:v mpeg1video -c:a mp2 -ac 1 -b:a 128k -ar 44100 -format mpeg OUTPUT.mpg && REN OUTPUT.mpg OUTPUT\n",
+        "ext/f-w-k/ext-ffmpeg/ffmpeg.EXE -hide_banner -nostdin -loglevel fatal -y -i INPUT -threads 1 -qscale:v 4 -y -c:v mpeg1video -c:a mp2 -ac 1 -b:a 128k -ar 44100 -format mpeg OUTPUT.mpg && REN OUTPUT.mpg OUTPUT\n",
         // expected errorcode
         0
     );
