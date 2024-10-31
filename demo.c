@@ -20,8 +20,8 @@ int main() {
 
         // present decoded textures as a fullscreen composed quad
         profile( "Video quad" ) {
-            if(is_rgb) fullscreen_quad_rgb( textures[0] );
-            else fullscreen_quad_ycbcr( textures );
+            if(is_rgb) blit(textures, 0, BLIT_RGB);
+            else blit(textures, 0, BLIT_YCBCR);
         }
 
         // input controls
