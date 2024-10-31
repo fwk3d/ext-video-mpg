@@ -200,12 +200,10 @@ texture_t* video_textures( video_t *v ) {
 AUTORUN {
     // FLAGS_EXTRA_QUALITY: -vf scale=iw*2:ih*2
     recipe(
-        // paths and extensions
-        "**.mp4;**.ogv;**.avi;**.mkv;**.wmv;**.mpg;**.mpeg",
+        // paths and extensions. expected errorlevel
+        "**.mp4;**.ogv;**.avi;**.mkv;**.wmv;**.mpg;**.mpeg", 0,
         // conversion steps
-        "ext/f-w-k/ext-ffmpeg/ffmpeg.EXE -hide_banner -nostdin -loglevel fatal -y -i INPUT -threads 1 -qscale:v 4 -y -c:v mpeg1video -c:a mp2 -ac 1 -b:a 128k -ar 44100 -format mpeg OUTPUT.mpg && REN OUTPUT.mpg OUTPUT\n",
-        // expected errorcode
-        0
+        "ext/f-w-k/ext-ffmpeg/ffmpeg.EXE -hide_banner -nostdin -loglevel fatal -y -i INPUT -threads 1 -qscale:v 4 -y -c:v mpeg1video -c:a mp2 -ac 1 -b:a 128k -ar 44100 -format mpeg OUTPUT.mpg && REN OUTPUT.mpg OUTPUT\n"
     );
 }
 
