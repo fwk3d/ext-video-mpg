@@ -8,24 +8,15 @@ int main() {
     app_create( 75, APP_MSAA2 );
 
     // load video
-    int is_rgb = flag("--rgb") ? 1 : 0;
-    video_t *v = video( "pexels-pachon-in-motion-17486489.mp4", VIDEO_LOOP | (is_rgb ? VIDEO_RGB : VIDEO_YCBCR) );
+    int do_rgb = flag("--rgb") ? 1 : 0;
+    video_t *v = video( "pexels-pachon-in-motion-17486489.mp4", VIDEO_LOOP | (do_rgb ? VIDEO_RGB : VIDEO_YCBCR) );
 
-    while( app_swap() ) {
+    while( app_swap() && !input(KEY_ESC) ) {
         // decode video frame and get associated textures (audio is automatically sent to audiomixer)
-        texture_t *textures;
-        profile( "Video decoder" ) {
-            textures = video_decode( v );
-        }
+        texture_t *textures = video_decode( v );
 
         // present decoded textures as a fullscreen composed quad
-        profile( "Video quad" ) {
-            if(is_rgb) blit(textures, 0, BLIT_RGB);
-            else blit(textures, 0, BLIT_YCBCR);
-        }
-
-        // input controls
-        if( input(KEY_ESC) ) break;
+        blit(textures, 0, do_rgb ? BLIT_RGB : BLIT_YCBCR);
 
         // ui video
         if( ui_panel("Video", 0) ) {
