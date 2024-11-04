@@ -90,9 +90,9 @@ static void mpeg_audio_callback(plm_t *plm, plm_samples_t *samples, void *user) 
 }
 
 video_t* video( const char *filename, int flags ) {
-    plm_t* plm = plm_create_with_file( vfs_handle(filename), 1 );
+    plm_t* plm = plm_create_with_file( file_handle(filename), 1 );
     if ( !plm ) {
-        PANIC( "!Cannot open '%s' file for reading\n", filename );
+        die( "!Cannot open '%s' file for reading\n", filename );
         return 0;
     }
 
